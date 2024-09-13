@@ -1,0 +1,45 @@
+#%RAML 1.0
+title: Empower - Veoci
+description: The Empower-Veoci service operations expose stricly selected Workday Human Capital Management Business Services and data 
+uses:
+  err-responses: /exchange_modules/23e323fc-7a2c-477e-88e7-94f64767ba2b/std-error-responses/1.0.0/std-error-responses.raml
+traits:
+  client-id-required:
+    headers:
+      client_id:
+        type: string
+      client_secret:
+        type: string
+  common-err-responses:
+    responses:
+      401:
+        description: Unauthorized access  
+        body:
+          application/json:
+            type: err-responses.err-401
+      404:
+        description: Bad request  
+        body:
+          application/json:
+            type: err-responses.err-404
+      500:
+        description: Unauthorized access  
+        body:
+          application/json:
+            type: err-responses.err-500
+
+/veoci:
+  get:
+    displayName: Get Workers for Veoci system
+    description: Returns list of workers back to caller in specified format
+    is: [ client-id-required, common-err-responses ]
+    responses:
+      200:
+        body:
+          application/json:
+            type: !include ./DataTypes/getWorkersVeociResponse.raml
+            example: !include ./ResponseExamples/getWorkersVeociResponse.raml
+  
+
+
+    

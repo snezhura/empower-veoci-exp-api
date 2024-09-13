@@ -1,0 +1,29 @@
+#%RAML 1.0 Library
+types:
+  err-401:  
+    type: object
+    properties:
+      errorCode:
+        type: number
+        example: 401
+      errorMessage: 
+        type: string
+        example: "Unauthorized request"
+  err-404:  
+    type: object
+    properties:
+      errorCode:
+        type: number
+        example: 404
+      errorMessage: 
+        type: string
+        example: "Bad request"
+  err-500:  
+    type: object
+    properties:
+      errorCode:
+        type: number
+        example: 500
+      errorMessage: 
+        type: string
+        example: "Internal server error"                     
